@@ -10,7 +10,11 @@
     "allowSyntheticDefaultImports": true, // Если библиотека не имеет default import, лоадеры вроде ts-loader babel-loader автоматически создают их
     //вместо import * as React from 'react;
     // можно писать так import React from 'react
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*" : ["./src/*"]
+    }
   },
   "ts-node": { //хак для смены типа для ts-node
     "compilerOptions": {

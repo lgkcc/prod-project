@@ -1,3 +1,3 @@
-export * from "./buildPlugins";
-export * from "./buildLoaders";
-export * from "./buildResolvers";
+export * from './buildPlugins';
+export * from './buildLoaders';
+export * from './buildResolvers';

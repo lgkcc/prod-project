@@ -4,6 +4,7 @@ export interface Paths {
     entry: string;
     output: string;
     html: string;
+    src: string;
 }
 
 export interface Options {
