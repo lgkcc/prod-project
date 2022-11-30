@@ -8,6 +8,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 .app {
   background: var(--bg-color);
   font: var(--font-m);
@@ -18,21 +19,25 @@
 .content-page {
   display: flex;
 }
+
 .page-wrapper {
   position: relative;
   padding: 20px;
   flex-grow: 1;
 }
+
 .item-left-margin {
   margin-left: 15px;
 }
+
 .item-right-margin {
   margin-right: 15px;
 }
-.center{
+
+.center {
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
