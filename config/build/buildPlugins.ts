@@ -2,9 +2,10 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { Options } from './type/config';
 
-export function buildPlugins({ paths, isDev }: Options):webpack.WebpackPluginInstance[] {
+export function buildPlugins({ paths, isDev, analyze }: Options):webpack.WebpackPluginInstance[] {
   const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html,
@@ -21,6 +22,9 @@ export function buildPlugins({ paths, isDev }: Options):webpack.WebpackPluginIns
   if (isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(new ReactRefreshPlugin());
+  }
+  if (analyze) {
+    plugins.push(new BundleAnalyzerPlugin());
   }
   return plugins;
 }

@@ -11,10 +11,12 @@ export interface Options {
     mode: BuildMode,
     paths: Paths,
     isDev: boolean,
-    port: number
+    port: number,
+    analyze: boolean,
 }
 
 export interface Env {
     mode: BuildMode;
     port: number;
+    analyze: boolean;
 }

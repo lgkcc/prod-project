@@ -10,12 +10,13 @@ const paths:Paths = {
   src: path.resolve(__dirname, 'src'),
 };
 export default (env:Env): webpack.Configuration => {
-  const { port = 3000, mode = 'development' } = env;
+  const { port = 3000, mode = 'development', analyze = false } = env;
   const isDev = mode === 'development';
   return buildWebpackConfig({
     mode,
     paths,
     port,
     isDev,
+    analyze,
   });
 };
