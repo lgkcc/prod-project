@@ -14,7 +14,7 @@ export const LanguageSwitcher:FC<LanguageSwitcherProps> = ({ className }) => {
     <Button
       className={cn(classes.LanguageSwitcher, {}, [className])}
       theme={ButtonTheme.CLEAR}
-      onClick={() => i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')}
+      onClick={async () => i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')}
     >
       {i18n.language.toUpperCase()}
     </Button>

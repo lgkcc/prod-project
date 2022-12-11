@@ -13,9 +13,9 @@ export const Sidebar:FC<SidebarProps> = () => {
   const [collapsed, setCollapsed] = useState(false);
   const toggleCollapsed = () => setCollapsed((prev) => !prev);
   return (
-    <div className={cn(classes.Sidebar, { [classes.collapsed]: collapsed })}>
-      {/* eslint-disable-next-line */}
-      <Button onClick={toggleCollapsed}>Toggle</Button>
+    <div className={cn(classes.Sidebar, { [classes.collapsed]: collapsed })} data-testid="sidebar">
+      {/* eslint-disable-next-line i18next/no-literal-string */}
+      <Button onClick={toggleCollapsed} data-testid="toggle">Toggle</Button>
       <div className={classes.switcher}>
         <ThemeSwitcher />
         <LanguageSwitcher />
