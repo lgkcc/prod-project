@@ -1,7 +1,7 @@
 @import "reset";
-@import "variables/global";
-@import "themes/light";
-@import "themes/dark";
+@import "./variables/global";
+@import "./themes/light";
+@import "./themes/dark";
 
 * {
   padding: 0;
@@ -40,4 +40,8 @@
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+}
+
+svg {
+  fill: var(--inverted-color-primary);
 }

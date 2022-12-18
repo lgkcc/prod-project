@@ -5,7 +5,7 @@ import classes from './PageError.module.scss';
 export const PageError = () => {
   const { t } = useTranslation();
   return (
-    <div className={cn(classes.PageError)}>
+    <div className={cn(classes.PageError)} data-testid="PageError">
       <div>
         {t('Произошла ошибка')}
       </div>

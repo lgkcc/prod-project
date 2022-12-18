@@ -1,6 +1,8 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Options } from './type/config';
+import { buildSassLoader } from './loaders/buildSassLoader';
+import { buildSvgLoader } from './loaders/buildSvgLoader';
 
 export function buildLoaders({ isDev }: Options): webpack.RuleSetRule[] {
   const babelLoader = {
@@ -17,10 +19,7 @@ export function buildLoaders({ isDev }: Options): webpack.RuleSetRule[] {
     test: /\.(png|jpe?g|gif)$/i,
     use: ['file-loader'],
   };
-  const svgLoader = {
-    test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  };
+  const svgLoader = buildSvgLoader();
   const cssLoader = {
     test: /\.css$/i,
     use: [MiniCssExtractPlugin.loader, {
@@ -35,24 +34,7 @@ export function buildLoaders({ isDev }: Options): webpack.RuleSetRule[] {
       },
     }],
   };
-  const sassLoader = {
-    test: /\.s[ac]ss$/i,
-    use: [
-      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-      {
-        loader: 'css-loader',
-        options: {
-          modules: {
-            auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-            localIdentName: isDev
-              ? '[path][name]__[local]--[hash:base64:5]'
-              : '[hash:base64:8]',
-          },
-        },
-      },
-      'sass-loader',
-    ],
-  };
+  const sassLoader = buildSassLoader(isDev);
   const typeScriptLoader = {
     test: /\.tsx?$/, // Определяем какие файлы будут попадать под правило (в данном случае tsx и ts)
     use: 'ts-loader', // Определяем какой загрузчик следует использовать для этих файлов

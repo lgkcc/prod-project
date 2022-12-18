@@ -12,6 +12,7 @@ export const LanguageSwitcher:FC<LanguageSwitcherProps> = ({ className }) => {
   const { i18n } = useTranslation();
   return (
     <Button
+      data-testid="languageSwitcher"
       className={cn(classes.LanguageSwitcher, {}, [className])}
       theme={ButtonTheme.CLEAR}
       onClick={async () => i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru')}
