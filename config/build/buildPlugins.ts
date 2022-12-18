@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { Options } from './type/config';
 
@@ -17,6 +18,11 @@ export function buildPlugins({ paths, isDev, analyze }: Options):webpack.Webpack
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'public/locales', to: 'locales' },
+      ],
     }),
   ];
   if (isDev) {
