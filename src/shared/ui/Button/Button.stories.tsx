@@ -16,6 +16,8 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Clear = Template.bind({});
 export const Outline = Template.bind({});
+export const Background = Template.bind({});
+export const BackgroundInverted = Template.bind({});
 export const ClearDark = Template.bind({});
 export const OutlineDark = Template.bind({});
 Clear.args = {
@@ -24,6 +26,14 @@ Clear.args = {
 };
 Outline.args = {
   theme: ButtonTheme.OUTLINE,
+  children: 'Click me!',
+};
+Background.args = {
+  theme: ButtonTheme.BACKGROUND,
+  children: 'Click me!',
+};
+BackgroundInverted.args = {
+  theme: ButtonTheme.BACKGROUND_INVERTED,
   children: 'Click me!',
 };
 ClearDark.args = {

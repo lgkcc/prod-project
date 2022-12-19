@@ -1,9 +1,27 @@
 .Sidebar {
   height: calc(100vh - var(--header-heigth));
   width: var(--sidebar-width);
-  background: var(--bar-bg-color);
+  background: var(--inverted-bg-color);
   position: relative;
   transition: width 0.4s ease;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  margin-left: 55px;
+  align-items: flex-start;
+  gap: 5px;
+
+  .linkText {
+    transition: all 0.4s ease;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 }
 
 .switcher {
@@ -20,5 +38,44 @@
 
   .switcher {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    gap: 0;
+
+    .linkText {
+      opacity: 0;
+      width: 0;
+      transition: all 0.25s ease;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+.toggleCollapsed {
+  position: absolute;
+  z-index: 1;
+  bottom: 80px;
+  right: -32px;
+
+  span {
+    display: block;
+    transition: all 0.2s ease;
+  }
+
+  &.revert {
+    span {
+      transform: rotate(180deg);
+    }
   }
 }

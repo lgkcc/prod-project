@@ -23,19 +23,12 @@ export const PrimaryDark = Template.bind({});
 export const Inverted = Template.bind({});
 export const InvertedDark = Template.bind({});
 
-export const Bar = Template.bind({});
-export const BarDark = Template.bind({});
-
 Primary.args = {
   theme: AppLinkTheme.PRIMARY,
   children: 'Click me!',
 };
 Inverted.args = {
   theme: AppLinkTheme.INVERTED,
-  children: 'Click me!',
-};
-Bar.args = {
-  theme: AppLinkTheme.BAR,
   children: 'Click me!',
 };
 PrimaryDark.args = {
@@ -46,11 +39,6 @@ InvertedDark.args = {
   theme: AppLinkTheme.INVERTED,
   children: 'Click me!',
 };
-BarDark.args = {
-  theme: AppLinkTheme.BAR,
-  children: 'Click me!',
-};
 
 PrimaryDark.decorators = [ThemeDecorator(Theme.Dark)];
 InvertedDark.decorators = [ThemeDecorator(Theme.Dark)];
-BarDark.decorators = [ThemeDecorator(Theme.Dark)];
