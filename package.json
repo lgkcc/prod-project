@@ -16,7 +16,10 @@
     "test:ui": "npx loki test",
     "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "sb": "start-storybook -p 6006 -c ./config/.storybook -s ./public",
-    "sb:build": "build-storybook -c ./config/.storybook -s ./public"
+    "sb:build": "build-storybook -c ./config/.storybook -s ./public",
+    "visual:report": "npm run visual:report:json && visual:report:html",
+    "visual:report:json": "node scripts/generate-visual-json-report.js",
+    "visual:report:html": "reg-cli --from .loki/report.json --report .loki/report.html"
   },
   "keywords": [],
   "author": "",
