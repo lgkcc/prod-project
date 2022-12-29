@@ -6,7 +6,8 @@
     "module": "ESNext",
     "target": "es5", //В какую спецификацию компилируем
     "jsx": "react-jsx",
-    "allowJs": true, //Делает комплияцию не только .ts файлов, но и .js
+    "allowJs": true, //Делает комплияцию не только .ts файлов, но и .j
+    "sourceMap": true,
     "allowSyntheticDefaultImports": true, // Если библиотека не имеет default import, лоадеры вроде ts-loader babel-loader автоматически создают их
     //вместо import * as React from 'react;
     // можно писать так import React from 'react

@@ -5,6 +5,7 @@ import i18n from 'shared/config/i18n/i18nForSb';
 
 export const i18nDecorator = (story: () => Story, context: any) => {
   const { locale } = context.globals;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     i18n.changeLanguage(locale);
   }, [locale]);
