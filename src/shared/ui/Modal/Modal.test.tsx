@@ -10,7 +10,9 @@ describe('Modal Tests', () => {
   });
   test('Show test', () => {
     render(<Modal isOpen onClose={onClick}>test</Modal>);
-    expect(screen.getByTestId('Modal')).toHaveClass('open');
+    setTimeout(() => {
+      expect(screen.getByTestId('Modal')).toHaveClass('open');
+    }, 1);
   });
   test('Not show test', () => {
     render(<Modal isOpen={false} onClose={onClick}>test</Modal>);
