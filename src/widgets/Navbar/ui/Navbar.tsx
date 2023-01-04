@@ -1,7 +1,7 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import cn from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Modal } from 'shared/ui/Modal/Modal';
+import { LoginModal } from 'features/AuthByUsername';
 import classes from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -9,22 +9,23 @@ interface NavbarProps {
 }
 
 export const Navbar:FC<NavbarProps> = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isAuthModal, setIsAuthModal] = useState(false);
+
+  const onCloseModal = useCallback(() => {
+    setIsAuthModal(false);
+  }, []);
+  const onShowModal = useCallback(() => {
+    setIsAuthModal(true);
+  }, []);
+
   return (
     <>
-      <Modal
-        isOpen={isOpen}
-        setIsOpen={() => setIsOpen(false)}
-        title="Авторизация"
-      >
-        {/* eslint-disable-next-line i18next/no-literal-string */}
-        {/* eslint-disable-next-line i18next/no-literal-string */}
-        Введите логин и пароль
-      </Modal>
+      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+
       <div className={cn(classes.Navbar)}>
         <div className={classes.links}>
           {/* eslint-disable-next-line i18next/no-literal-string */}
-          <Button theme={ButtonTheme.CLEAR} onClick={() => setIsOpen(true)}>Войти</Button>
+          <Button theme={ButtonTheme.CLEAR} onClick={onShowModal}>Войти</Button>
         </div>
       </div>
     </>

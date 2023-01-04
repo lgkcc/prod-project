@@ -9,26 +9,49 @@ interface ModalProps {
     additionalCls?: string;
     children: ReactNode;
     isOpen: boolean;
-    setIsOpen: () => void;
+    onClose: () => void;
     title?: ReactNode;
+    lazy?: boolean;
 }
 
 export const Modal:FC<ModalProps> = ({
-  children, isOpen, setIsOpen, additionalCls, title,
+  children, isOpen, onClose, additionalCls, title, lazy,
 }) => {
-  const [isClosed, setIsClosed] = useState(false);
-  const mods = {
-    [classes.open]: isOpen,
-    [classes.close]: isClosed,
-  };
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRefTwo = useRef<ReturnType<typeof setTimeout>>();
+  const [isClosed, setIsClosed] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
+
+  const openModal = useCallback(() => {
+    setIsOpened(false);
+    timerRefTwo.current = setTimeout(() => {
+      setIsOpened(true);
+    }, 0);
+  }, []);
   const closeModal = useCallback(() => {
     setIsClosed(true);
     timerRef.current = setTimeout(() => {
-      setIsOpen();
+      onClose();
       setIsClosed(false);
     }, 250);
-  }, [setIsOpen]);
+  }, [onClose]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+      openModal();
+    }
+    return () => {
+      setIsMounted(false);
+    };
+  }, [isOpen, openModal]);
+
+  const mods = {
+    [classes.open]: isOpened,
+    [classes.close]: isClosed,
+  };
+
   const onKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       closeModal();
@@ -40,9 +63,15 @@ export const Modal:FC<ModalProps> = ({
     }
     return () => {
       clearTimeout(timerRef.current);
+      clearTimeout(timerRefTwo.current);
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onKeyDown]);
+
+  if (lazy && !isMounted) {
+    return null;
+  }
+
   return (
     <Portal>
       <div className={cn(classes.Modal, mods, [additionalCls])} data-testid="Modal">
