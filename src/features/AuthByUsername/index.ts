@@ -1,1 +1,1 @@
-export { LoginModal } from './ui/LoginModal/LoginModal';
+export { LoginModalLazy as LoginModal } from './ui/LoginModal/LoginModalLazy';

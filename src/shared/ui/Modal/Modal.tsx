@@ -95,3 +95,5 @@ export const Modal:FC<ModalProps> = ({
     </Portal>
   );
 };
+
+export default Modal;

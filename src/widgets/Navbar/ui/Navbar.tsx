@@ -1,4 +1,6 @@
-import { FC, useCallback, useState } from 'react';
+import {
+  FC, useCallback, useState,
+} from 'react';
 import cn from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
@@ -20,7 +22,7 @@ export const Navbar:FC<NavbarProps> = () => {
 
   return (
     <>
-      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
 
       <div className={cn(classes.Navbar)}>
         <div className={classes.links}>

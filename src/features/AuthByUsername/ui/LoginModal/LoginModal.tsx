@@ -9,7 +9,7 @@ interface LoginModalProps {
     onClose: () => void;
 }
 
-export const LoginModal:FC<LoginModalProps> = ({ additionalCls, isOpen, onClose }) => (
+const LoginModal:FC<LoginModalProps> = ({ additionalCls, isOpen, onClose }) => (
   <Modal
     additionalCls={cn(undefined, {}, [additionalCls])}
     isOpen={isOpen}
@@ -19,3 +19,5 @@ export const LoginModal:FC<LoginModalProps> = ({ additionalCls, isOpen, onClose 
     <LoginForm />
   </Modal>
 );
+
+export default LoginModal;

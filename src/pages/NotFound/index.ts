@@ -1,3 +1,1 @@
-import NotFound from './ui/NotFound';
-
-export { NotFound };
+export { NotFoundLazy as NotFound } from './ui/NotFoundLazy';
