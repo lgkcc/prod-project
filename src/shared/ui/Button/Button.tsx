@@ -1,6 +1,5 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
 import cn from 'shared/lib/classNames/classNames';
-import { Theme } from 'app/providers/ThemeProvider';
 import classes from './Button.module.scss';
 
 export enum ButtonTheme {
@@ -31,14 +30,19 @@ export const Button: FC<ButtonProps> = (props) => {
     theme = ButtonTheme.BACKGROUND_INVERTED,
     square = false,
     size = ButtonSize.m,
+    disabled,
     ...otherProps
   } = props;
+  const mods = {
+    [classes.square]: square,
+    [classes.disabled]: disabled,
+  };
   return (
     <button
       type="button"
       {...otherProps}
       className={
-        cn(classes.Button, { [classes.square]: square }, [className, classes[theme], classes[size]])
+        cn(classes.Button, mods, [className, classes[theme], classes[size]])
       }
     >
       {children}

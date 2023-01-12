@@ -3,6 +3,7 @@ import {
 } from 'react';
 import cn from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/Portal';
+import { useTheme } from 'shared/hooks/useTheme';
 import classes from './Modal.module.scss';
 
 interface ModalProps {
@@ -22,6 +23,7 @@ export const Modal:FC<ModalProps> = ({
   const [isClosed, setIsClosed] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
+  const { theme } = useTheme();
 
   const openModal = useCallback(() => {
     setIsOpened(false);

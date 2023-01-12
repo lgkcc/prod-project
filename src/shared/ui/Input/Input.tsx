@@ -22,7 +22,6 @@ export const Input = memo((props: InputProps) => {
   const { t } = useTranslation();
   useEffect(() => {
     if (autoFocus) {
-      console.log(123);
       setFocus(true);
       inputRef.current.focus();
     }

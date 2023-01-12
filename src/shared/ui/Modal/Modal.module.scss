@@ -48,11 +48,13 @@
   font: var(--font-xl);
   display: flex;
   line-height: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  align-items: center;
 
   .closeButton {
     margin-left: auto;
     cursor: pointer;
     color: black;
+    display: flex;
   }
 }

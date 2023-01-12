@@ -2,5 +2,11 @@
   "Главная": "Main",
   "О нас": "About us",
   "Не найдено": "Page not found",
-  "Переключить": "Toggle"
+  "Переключить": "Toggle",
+  "Авторизация": "Login",
+  "Выйти": "Logout",
+  "Войти": "Login",
+  "Логин": "Username",
+  "Пароль": "Password",
+  "Пользователь не найден": "User not found"
 }
